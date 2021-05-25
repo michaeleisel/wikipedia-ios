@@ -167,3 +167,7 @@ public final class WidgetController: NSObject {
     #endif
     
 }
+
+extension WidgetController {
+    
+}
