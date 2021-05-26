@@ -138,6 +138,8 @@
 		00669505265DA3D300E23AE4 /* FeaturedArticleWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00669504265DA3D300E23AE4 /* FeaturedArticleWidget.swift */; };
 		00669507265DAB7800E23AE4 /* FeaturedArticleWidget+LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00669506265DAB7800E23AE4 /* FeaturedArticleWidget+LocalizedStrings.swift */; };
 		0066BE30265EC4A900512BE8 /* WidgetFeaturedContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0066BE2F265EC4A900512BE8 /* WidgetFeaturedContent.swift */; };
+		0066BE32265ECD5E00512BE8 /* ExploreWidget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0066BE31265ECD5E00512BE8 /* ExploreWidget.swift */; };
+		0066BE34265ECD7400512BE8 /* ExploreWidget+LocalizedStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0066BE33265ECD7400512BE8 /* ExploreWidget+LocalizedStrings.swift */; };
 		006D273524D8BAFB00947551 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006D273424D8BAFB00947551 /* View+Extensions.swift */; };
 		006D273724D8D8D100947551 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 006D273624D8D8D100947551 /* Date+Extensions.swift */; };
 		00841DE524477805003CF74A /* AppTabBarDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = FFE891452445150B0058B642 /* AppTabBarDelegate.swift */; };
@@ -3534,6 +3536,8 @@
 		00669504265DA3D300E23AE4 /* FeaturedArticleWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedArticleWidget.swift; sourceTree = "<group>"; };
 		00669506265DAB7800E23AE4 /* FeaturedArticleWidget+LocalizedStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FeaturedArticleWidget+LocalizedStrings.swift"; sourceTree = "<group>"; };
 		0066BE2F265EC4A900512BE8 /* WidgetFeaturedContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WidgetFeaturedContent.swift; sourceTree = "<group>"; };
+		0066BE31265ECD5E00512BE8 /* ExploreWidget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExploreWidget.swift; sourceTree = "<group>"; };
+		0066BE33265ECD7400512BE8 /* ExploreWidget+LocalizedStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ExploreWidget+LocalizedStrings.swift"; sourceTree = "<group>"; };
 		006D273424D8BAFB00947551 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; usesTabs = 0; };
 		006D273624D8D8D100947551 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; usesTabs = 0; };
 		00A7946A245CA4E60063BA18 /* ArticleSurveyTimerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleSurveyTimerController.swift; sourceTree = "<group>"; usesTabs = 0; };
@@ -5268,6 +5272,8 @@
 		00021DFE24D48F2200476F97 /* Widgets */ = {
 			isa = PBXGroup;
 			children = (
+				0066BE31265ECD5E00512BE8 /* ExploreWidget.swift */,
+				0066BE33265ECD7400512BE8 /* ExploreWidget+LocalizedStrings.swift */,
 				00669504265DA3D300E23AE4 /* FeaturedArticleWidget.swift */,
 				00669506265DAB7800E23AE4 /* FeaturedArticleWidget+LocalizedStrings.swift */,
 				FF9416D724E203030070FEE7 /* OnThisDayWidget.swift */,
@@ -10382,10 +10388,12 @@
 				FF9416D824E203030070FEE7 /* OnThisDayWidget.swift in Sources */,
 				FF9416DE24E2098C0070FEE7 /* OnThisDayView.swift in Sources */,
 				0033D79D24F8193900CAB5B3 /* UIColor+Extensions.swift in Sources */,
+				0066BE32265ECD5E00512BE8 /* ExploreWidget.swift in Sources */,
 				006D273524D8BAFB00947551 /* View+Extensions.swift in Sources */,
 				0033D7A124F8199300CAB5B3 /* Sparkline.swift in Sources */,
 				00669505265DA3D300E23AE4 /* FeaturedArticleWidget.swift in Sources */,
 				00021E0424D4A42A00476F97 /* PictureOfTheDayWidget.swift in Sources */,
+				0066BE34265ECD7400512BE8 /* ExploreWidget+LocalizedStrings.swift in Sources */,
 				002AB870250BEFBE00ADAC87 /* PictureOfTheDayWidget+LocalizedStrings.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

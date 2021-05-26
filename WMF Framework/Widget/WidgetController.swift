@@ -8,6 +8,7 @@ public final class WidgetController: NSObject {
     // MARK: Nested Types
 
     public enum SupportedWidget: String {
+        case explore = "org.wikimedia.wikipedia.widgets.explore"
         case featuredArticle = "org.wikimedia.wikipedia.widgets.featuredArticle"
         case onThisDay = "org.wikimedia.wikipedia.widgets.onThisDay"
         case pictureOfTheDay = "org.wikimedia.wikipedia.widgets.potd"

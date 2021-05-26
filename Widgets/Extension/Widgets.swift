@@ -6,6 +6,7 @@ struct WikipediaWidgets: WidgetBundle {
 
 	@WidgetBundleBuilder
 	var body: some Widget {
+        ExploreWidget()
         FeaturedArticleWidget()
 		PictureOfTheDayWidget()
 		OnThisDayWidget()
