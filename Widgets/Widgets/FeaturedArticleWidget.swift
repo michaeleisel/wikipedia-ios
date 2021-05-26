@@ -24,7 +24,7 @@ final class FeaturedArticleWidgetData {
 	// MARK: - Public
 
 	static func fetchFeaturedArticleWidgetData() {
-		let widgetController = WidgetController.shared
+		
 	}
 
 }
@@ -33,6 +33,7 @@ final class FeaturedArticleWidgetData {
 
 struct FeaturedArticleEntry: TimelineEntry {
 	var date: Date
+	var content: WidgetFeaturedContent.FeaturedArticleContent?
 
 	/*
 
@@ -47,15 +48,31 @@ struct FeaturedArticleProvider: TimelineProvider {
 	typealias Entry = FeaturedArticleEntry
 
 	func placeholder(in context: Context) -> FeaturedArticleEntry {
-		return FeaturedArticleEntry(date: Date())
+		return FeaturedArticleEntry(date: Date(), content: nil)
 	}
 
 	func getSnapshot(in context: Context, completion: @escaping (FeaturedArticleEntry) -> Void) {
-		completion(FeaturedArticleEntry(date: Date()))
+		let wc = WidgetContentFetcher.shared
+		wc.fetchFeaturedContent(language: "en", date: Date(), completion: { result in
+			switch result {
+			case .success(let content):
+				completion(FeaturedArticleEntry(date: Date(), content: content.featuredArticle))
+			case .failure(_):
+			completion(FeaturedArticleEntry(date: Date(), content: nil))
+			}
+		})
 	}
 
 	func getTimeline(in context: Context, completion: @escaping (Timeline<FeaturedArticleEntry>) -> Void) {
-		completion(Timeline(entries: [FeaturedArticleEntry(date: Date())], policy: .atEnd))
+		let wc = WidgetContentFetcher.shared
+		wc.fetchFeaturedContent(language: "en", date: Date(), completion: { result in
+			switch result {
+			case .success(let content):
+			completion(Timeline(entries: [FeaturedArticleEntry(date: Date(), content: content.featuredArticle)], policy: .atEnd))
+			case .failure(_):
+			completion(Timeline(entries: [FeaturedArticleEntry(date: Date(), content: nil)], policy: .atEnd))
+			}
+		})
 	}
 }
 
@@ -63,9 +80,16 @@ struct FeaturedArticleProvider: TimelineProvider {
 
 struct FeaturedArticleView: View {
 	var entry: FeaturedArticleEntry
+	var contentURL: URL? {
+		if let urlString = entry.content?.contentURL.desktop.page {
+			return URL(string: urlString)
+		}
+		return nil
+	}
 
 	var body: some View {
-		Text("Hello \(entry.date)")
+		Text("\(entry.content.debugDescription)")
+			.widgetURL(contentURL)
 	}
 	
 }

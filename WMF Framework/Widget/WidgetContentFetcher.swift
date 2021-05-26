@@ -1,9 +1,45 @@
 import Foundation
 import Combine
 
-final class WidgetContentFetcher {
+public final class WidgetContentFetcher {
 
-	// network session to pull from endpoint
-	// for now, just just TFA, display unavailable
+	// MARK: - Nested Type
+
+	public enum FetcherError: Error {
+		case urlFailure
+		case contentFailure
+	}
+
+	// MARK: - Properties
+
+	public static let shared = WidgetContentFetcher()
+
+	let session = URLSession.shared
+	let dateFormatter: DateFormatter = {
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "yyyy/MM/dd"
+		return dateFormatter
+	}()
+
+	// MARK: - Public
+
+	public func fetchFeaturedContent(language: String, date: Date, completion: @escaping (Result<WidgetFeaturedContent, FetcherError>) -> Void) {
+		let formattedDate = dateFormatter.string(from: date)
+		guard let featuredURL = URL(string: "https://en.wikipedia.org/api/rest_v1/feed/featured/\(formattedDate)") else {
+			completion(.failure(.urlFailure))
+			return
+		}
+
+		let task = session.dataTask(with: featuredURL, completionHandler: { data, response, error in
+			if let data = data, let decoded = try? JSONDecoder().decode(WidgetFeaturedContent.self, from: data) {
+				completion(.success(decoded))
+				return
+			}
+
+			completion(.failure(.contentFailure))
+		})
+
+		task.resume()
+	}
 
 }
