@@ -30,14 +30,32 @@ public final class WidgetContentFetcher {
 			return
 		}
 
-		let task = session.dataTask(with: featuredURL, completionHandler: { data, response, error in
+		let task = session.dataTask(with: featuredURL) { data, response, error in
 			if let data = data, let decoded = try? JSONDecoder().decode(WidgetFeaturedContent.self, from: data) {
 				completion(.success(decoded))
 				return
 			}
 
 			completion(.failure(.contentFailure))
-		})
+		}
+
+		task.resume()
+	}
+
+	public func fetchImageDataFrom(imageSource: WidgetFeaturedContent.FeaturedArticleContent.ImageSource, completion: @escaping (Result<Data, FetcherError>) -> Void) {
+		guard let imageURL = URL(string: imageSource.source) else {
+			completion(.failure(.urlFailure))
+			return
+		}
+
+		let task = session.dataTask(with: imageURL) { data, response, error in
+			if let data = data {
+				completion(.success(data))
+				return
+			}
+
+			completion(.failure(.contentFailure))
+		}
 
 		task.resume()
 	}

@@ -1,6 +1,7 @@
 import SwiftUI
 import WidgetKit
 import WMF
+import UIKit
 
 // MARK: - Widget
 
@@ -24,7 +25,7 @@ final class FeaturedArticleWidgetData {
 	// MARK: - Public
 
 	static func fetchFeaturedArticleWidgetData() {
-		
+
 	}
 
 }
@@ -36,8 +37,6 @@ struct FeaturedArticleEntry: TimelineEntry {
 	var content: WidgetFeaturedContent.FeaturedArticleContent?
 
 	/*
-
-
 
 	*/
 }
@@ -55,8 +54,20 @@ struct FeaturedArticleProvider: TimelineProvider {
 		let wc = WidgetContentFetcher.shared
 		wc.fetchFeaturedContent(language: "en", date: Date(), completion: { result in
 			switch result {
-			case .success(let content):
-				completion(FeaturedArticleEntry(date: Date(), content: content.featuredArticle))
+			case .success(var content):
+				if let imageSource = content.featuredArticle?.thumbnailSource {
+					wc.fetchImageDataFrom(imageSource: imageSource) { result in
+						switch result {
+						case .success(let data):
+							content.featuredArticle?.thumbnailSource?.data = data
+							completion(FeaturedArticleEntry(date: Date(), content: content.featuredArticle))
+						case .failure(_):
+							completion(FeaturedArticleEntry(date: Date(), content: content.featuredArticle))
+						}
+					}
+				} else {
+					completion(FeaturedArticleEntry(date: Date(), content: content.featuredArticle))
+				}
 			case .failure(_):
 			completion(FeaturedArticleEntry(date: Date(), content: nil))
 			}
@@ -67,8 +78,20 @@ struct FeaturedArticleProvider: TimelineProvider {
 		let wc = WidgetContentFetcher.shared
 		wc.fetchFeaturedContent(language: "en", date: Date(), completion: { result in
 			switch result {
-			case .success(let content):
-			completion(Timeline(entries: [FeaturedArticleEntry(date: Date(), content: content.featuredArticle)], policy: .atEnd))
+			case .success(var content):
+				if let imageSource = content.featuredArticle?.thumbnailSource {
+					wc.fetchImageDataFrom(imageSource: imageSource) { result in
+						switch result {
+						case .success(let data):
+							content.featuredArticle?.thumbnailSource?.data = data
+							completion(Timeline(entries: [FeaturedArticleEntry(date: Date(), content: content.featuredArticle)], policy: .atEnd))
+						case .failure(_):
+							completion(Timeline(entries: [FeaturedArticleEntry(date: Date(), content: content.featuredArticle)], policy: .atEnd))
+						}
+					}
+				} else {
+					completion(Timeline(entries: [FeaturedArticleEntry(date: Date(), content: content.featuredArticle)], policy: .atEnd))
+				}
 			case .failure(_):
 			completion(Timeline(entries: [FeaturedArticleEntry(date: Date(), content: nil)], policy: .atEnd))
 			}
@@ -88,8 +111,12 @@ struct FeaturedArticleView: View {
 	}
 
 	var body: some View {
-		Text("\(entry.content.debugDescription)")
-			.widgetURL(contentURL)
+		VStack {
+			Text("\(entry.content?.displayTitle ?? "-")")
+			if let imageData = entry.content?.thumbnailSource?.data {
+				Image(uiImage: UIImage(data: imageData) ?? UIImage())
+			}
+		}
+		.widgetURL(contentURL)
 	}
-	
 }

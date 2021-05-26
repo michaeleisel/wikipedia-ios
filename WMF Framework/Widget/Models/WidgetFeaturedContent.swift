@@ -31,7 +31,12 @@ public struct WidgetFeaturedContent: Codable {
 		}
 
 		public struct ImageSource: Codable {
-			let source: String
+			enum CodingKeys: String, CodingKey {
+				case source
+			}
+
+			public let source: String
+			public var data: Data?
 		}
 
 		// MARK: - Featured Article - Properties
@@ -41,13 +46,13 @@ public struct WidgetFeaturedContent: Codable {
 		public let extract: String
 		public let languageDirection: String
 		public let contentURL: ContentURL
-		public let thumbnailSource: ImageSource?
-		public let originalImageSource: ImageSource?
+		public var thumbnailSource: ImageSource?
+		public var originalImageSource: ImageSource?
 	}
 
 	// MARK: - Properties
 
 	public let fetchDate = Date()
-	public let featuredArticle: FeaturedArticleContent?
+	public var featuredArticle: FeaturedArticleContent?
 
 }
