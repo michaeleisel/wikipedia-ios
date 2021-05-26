@@ -6,10 +6,10 @@ struct WikipediaWidgets: WidgetBundle {
 
 	@WidgetBundleBuilder
 	var body: some Widget {
+        FeaturedArticleWidget()
 		PictureOfTheDayWidget()
 		OnThisDayWidget()
-        TopReadWidget()
-        // We can support more widgets just by adding them here
+        TopReadWidget()        
 	}
 
 }

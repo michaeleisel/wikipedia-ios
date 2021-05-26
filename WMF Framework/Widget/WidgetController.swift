@@ -8,8 +8,9 @@ public final class WidgetController: NSObject {
     // MARK: Nested Types
 
     public enum SupportedWidget: String {
-        case pictureOfTheDay = "org.wikimedia.wikipedia.widgets.potd"
+        case featuredArticle = "org.wikimedia.wikipedia.widgets.featuredArticle"
         case onThisDay = "org.wikimedia.wikipedia.widgets.onThisDay"
+        case pictureOfTheDay = "org.wikimedia.wikipedia.widgets.potd"
         case topRead = "org.wikimedia.wikipedia.widgets.topRead"
 
         public var identifier: String {
@@ -169,5 +170,16 @@ public final class WidgetController: NSObject {
 }
 
 extension WidgetController {
-    
+
+    // var for contentfetcher
+    //
+
+    func loadSettings() {
+
+    }
+
+    func loadCache() {
+        
+    }
+
 }
