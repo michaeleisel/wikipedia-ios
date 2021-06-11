@@ -763,7 +763,7 @@ class PlacesViewController: ViewController, UISearchBarDelegate, ArticlePopoverV
             keysToFetch.append(keyToFetch)
         }
         
-        let request = WMFArticle.fetchRequest()
+        let request = WMFArticle.fetchRequest() as! NSFetchRequest<WMFArticle>
         request.predicate = NSPredicate(format: "key in %@", keysToFetch)
         request.sortDescriptors = [NSSortDescriptor(keyPath: \WMFArticle.placesSortOrder, ascending: true)]
         articleFetchedResultsController = NSFetchedResultsController<WMFArticle>(fetchRequest: request, managedObjectContext: dataStore.viewContext, sectionNameKeyPath: nil, cacheName: nil)
@@ -1178,7 +1178,7 @@ class PlacesViewController: ViewController, UISearchBarDelegate, ArticlePopoverV
     func clearSearchHistory() {
         do {
             let moc = dataStore.viewContext
-            let request = WMFKeyValue.fetchRequest()
+            let request = WMFKeyValue.fetchRequest() as! NSFetchRequest<WMFKeyValue>
             request.predicate = NSPredicate(format: "group == %@", currentSearchHistoryGroup())
             request.sortDescriptors = [NSSortDescriptor(keyPath: \WMFKeyValue.date, ascending: false)]
             let results = try moc.fetch(request)
@@ -1195,7 +1195,7 @@ class PlacesViewController: ViewController, UISearchBarDelegate, ArticlePopoverV
         var keyValue: WMFKeyValue?
         do {
             let key = placeSearch.key
-            let request = WMFKeyValue.fetchRequest()
+            let request = WMFKeyValue.fetchRequest() as! NSFetchRequest<WMFKeyValue>
             request.predicate = NSPredicate(format: "key == %@ && group == %@", key, currentSearchHistoryGroup())
             request.fetchLimit = 1
             let results = try moc.fetch(request)
@@ -1860,7 +1860,7 @@ class PlacesViewController: ViewController, UISearchBarDelegate, ArticlePopoverV
             var recentSearches: [PlaceSearch] = []
             do {
                 let moc = dataStore.viewContext
-                let request = WMFKeyValue.fetchRequest()
+                let request = WMFKeyValue.fetchRequest() as! NSFetchRequest<WMFKeyValue>
                 request.predicate = NSPredicate(format: "group == %@", currentSearchHistoryGroup())
                 request.sortDescriptors = [NSSortDescriptor(keyPath: \WMFKeyValue.date, ascending: false)]
                 let results = try moc.fetch(request)

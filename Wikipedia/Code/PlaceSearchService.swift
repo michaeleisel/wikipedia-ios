@@ -37,7 +37,7 @@ class PlaceSearchService
         get {
             let savedRequest = WMFArticle.fetchRequest()
             savedRequest.predicate = NSPredicate(format: "savedDate != NULL && signedQuadKey != NULL")
-            return savedRequest
+            return savedRequest as! NSFetchRequest<WMFArticle>
         }
     }
     
@@ -45,7 +45,7 @@ class PlaceSearchService
         get {
             let savedRequest = WMFArticle.fetchRequest()
             savedRequest.predicate = NSPredicate(format: "savedDate != NULL")
-            return savedRequest
+            return savedRequest as! NSFetchRequest<WMFArticle>
         }
     }
 
@@ -117,7 +117,7 @@ class PlaceSearchService
     public func fetchSavedArticles(searchString: String?, completion: @escaping (NSFetchRequest<WMFArticle>?) -> () = {_ in }) {
         let moc = dataStore.viewContext
         let done = {
-            let request = WMFArticle.fetchRequest()
+            let request = WMFArticle.fetchRequest() as! NSFetchRequest<WMFArticle>
             let basePredicate = NSPredicate(format: "savedDate != NULL && signedQuadKey != NULL")
             request.predicate = basePredicate
             if let searchString = searchString {
@@ -132,7 +132,7 @@ class PlaceSearchService
         do {
             let savedPagesWithLocation = try moc.fetch(fetchRequestForSavedArticlesWithLocation)
             guard savedPagesWithLocation.count >= 99 else {
-                let savedPagesWithoutLocationRequest = WMFArticle.fetchRequest()
+                let savedPagesWithoutLocationRequest = WMFArticle.fetchRequest() as! NSFetchRequest<WMFArticle>
                 savedPagesWithoutLocationRequest.predicate = NSPredicate(format: "savedDate != NULL && signedQuadKey == NULL")
                 savedPagesWithoutLocationRequest.sortDescriptors = [NSSortDescriptor(keyPath: \WMFArticle.savedDate, ascending: false)]
                 let savedPagesWithoutLocation = try moc.fetch(savedPagesWithoutLocationRequest)

@@ -23,7 +23,7 @@ class DisambiguationPagesViewController: ArticleFetchedResultsViewController {
     }
 
     override func setupFetchedResultsController(with dataStore: MWKDataStore) {
-        let request = WMFArticle.fetchRequest()
+        let request = WMFArticle.fetchRequest() as! NSFetchRequest<WMFArticle>
         request.predicate = NSPredicate(format: "key IN %@", articleURLs.compactMap { $0.wmf_databaseKey })
         request.sortDescriptors = [NSSortDescriptor(key: "key", ascending: true)]
         fetchedResultsController = NSFetchedResultsController(fetchRequest: request, managedObjectContext: dataStore.viewContext, sectionNameKeyPath: nil, cacheName: nil)

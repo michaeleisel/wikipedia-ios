@@ -151,7 +151,7 @@ private extension SavedArticlesFetcher {
         assert(Thread.isMainThread)
         
         let moc = dataStore.viewContext
-        let request = WMFArticle.fetchRequest()
+        let request = WMFArticle.fetchRequest() as! NSFetchRequest<WMFArticle>
         request.predicate = articlesToFetchPredicate
         request.sortDescriptors = [NSSortDescriptor(key: "savedDate", ascending: true)]
         request.fetchLimit = 1
@@ -198,7 +198,7 @@ private extension SavedArticlesFetcher {
                 }
             }
         } else {
-            let downloadedRequest = WMFArticle.fetchRequest()
+            let downloadedRequest = WMFArticle.fetchRequest() as! NSFetchRequest<WMFArticle>
             downloadedRequest.predicate = NSPredicate(format: "savedDate == NULL && isDownloaded == YES")
             downloadedRequest.sortDescriptors = [NSSortDescriptor(key: "savedDate", ascending: true)]
             downloadedRequest.fetchLimit = 1
@@ -395,7 +395,7 @@ class MobileViewToMobileHTMLMigrationController: NSObject {
         let request = WMFArticle.fetchRequest()
         request.includesSubentities = false
         request.predicate = NSPredicate(format: isConversionFromMobileViewNeededPredicateString)
-        return request 
+        return (request as! NSFetchRequest<WMFArticle>)
     }()
 
     private lazy var mostRecentArticleToBeConvertedFetchRequest: NSFetchRequest<WMFArticle> = {
@@ -404,7 +404,7 @@ class MobileViewToMobileHTMLMigrationController: NSObject {
         request.sortDescriptors = [NSSortDescriptor(key: "savedDate", ascending: false)]
         request.fetchLimit = 1
         request.propertiesToFetch = []
-        return request
+        return (request as! NSFetchRequest<WMFArticle>)
     }()
 
     @objc private func _convertOneArticleIfNecessary() {

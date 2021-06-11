@@ -66,7 +66,7 @@ import Foundation
             return []
         }
         
-        let allContentGroupFetchRequest = WMFContentGroup.fetchRequest()
+        let allContentGroupFetchRequest = WMFContentGroup.fetchRequest() as! NSFetchRequest<WMFContentGroup>
         
         let allContentGroups = try moc.fetch(allContentGroupFetchRequest)
         var referencedArticleKeys = Set<String>(minimumCapacity: allContentGroups.count * 5 + 1)
@@ -147,7 +147,7 @@ import Foundation
             - Items with `isExcludedFromFeed == YES` need to stay in the database so that they will continue to be excluded from the feed
         */
         
-        let articlesToDeleteFetchRequest = WMFArticle.fetchRequest()
+        let articlesToDeleteFetchRequest = WMFArticle.fetchRequest() as! NSFetchRequest<WMFArticle>
         //savedDate == NULL && isDownloaded == YES will be picked up by SavedArticlesFetcher for deletion
         let articlesToDeletePredicate = NSPredicate(format: "viewedDate == NULL && savedDate == NULL && isDownloaded == NO && placesSortOrder == 0 && isExcludedFromFeed == NO")
         

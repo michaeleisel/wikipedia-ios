@@ -32,7 +32,7 @@ extension WMFArticle {
         let request = self.fetchRequest()
         request.predicate = NSPredicate(format: "viewedDate != NULL")
         request.sortDescriptors = [NSSortDescriptor(key: "viewedDate", ascending: false)]
-        return request
+        return request as! NSFetchRequest<WMFArticle>
     }
     
     public func addToReadHistory() throws {

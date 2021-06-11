@@ -70,7 +70,7 @@ extension NSManagedObjectContext {
     public func retryFailedArticleDownloads(with keys: [String]) throws {
         let batches = keys.chunked(into: 500)
         for batch in batches {
-            let articleFetch = WMFArticle.fetchRequest()
+            let articleFetch = WMFArticle.fetchRequest() as! NSFetchRequest<WMFArticle>
             articleFetch.predicate = NSPredicate(format: "errorCodeNumber != NULL && key IN %@", batch)
             let articles = try fetch(articleFetch)
             for article in articles {

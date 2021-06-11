@@ -82,7 +82,7 @@ extension MWKDataStore {
             
             do {
                 // Update ContentGroups
-                let contentGroupFetchRequest: NSFetchRequest<WMFContentGroup> = WMFContentGroup.fetchRequest()
+                let contentGroupFetchRequest: NSFetchRequest<WMFContentGroup> = WMFContentGroup.fetchRequest() as! NSFetchRequest<WMFContentGroup>
                 contentGroupFetchRequest.predicate = NSPredicate(format: "siteURLString == %@", siteURLString)
                 let groups = try moc.fetch(contentGroupFetchRequest)
                 for group in groups {
@@ -100,7 +100,7 @@ extension MWKDataStore {
                 
                 // Update Articles and Gather Keys
                 var articleKeys: Set<String> = []
-                let articleFetchRequest: NSFetchRequest<WMFArticle> = WMFArticle.fetchRequest()
+                let articleFetchRequest: NSFetchRequest<WMFArticle> = WMFArticle.fetchRequest() as! NSFetchRequest<WMFArticle>
                 articleFetchRequest.predicate = NSPredicate(format: "key BEGINSWITH %@", siteURLString)
                 let articles = try moc.fetch(articleFetchRequest)
                 for article in articles {
