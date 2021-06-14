@@ -147,6 +147,7 @@
 		00A7946D245CA4E60063BA18 /* ArticleSurveyTimerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A7946A245CA4E60063BA18 /* ArticleSurveyTimerController.swift */; };
 		00A7946E245CA4E60063BA18 /* ArticleSurveyTimerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00A7946A245CA4E60063BA18 /* ArticleSurveyTimerController.swift */; };
 		00AB75BD24D4E8FB0041056A /* WMF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D844D96C1D6CB2600042D692 /* WMF.framework */; };
+		00C69C3A2678206B0036D5D5 /* WidgetExploreContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00C69C392678206A0036D5D5 /* WidgetExploreContent.swift */; };
 		00D280F7247EFFFE006BEE23 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D280F6247EFFFE006BEE23 /* Date+Extensions.swift */; };
 		00D280F8247EFFFE006BEE23 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D280F6247EFFFE006BEE23 /* Date+Extensions.swift */; };
 		00D280F9247EFFFE006BEE23 /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 00D280F6247EFFFE006BEE23 /* Date+Extensions.swift */; };
@@ -3537,6 +3538,7 @@
 		006D273424D8BAFB00947551 /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; usesTabs = 0; };
 		006D273624D8D8D100947551 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; usesTabs = 0; };
 		00A7946A245CA4E60063BA18 /* ArticleSurveyTimerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleSurveyTimerController.swift; sourceTree = "<group>"; usesTabs = 0; };
+		00C69C392678206A0036D5D5 /* WidgetExploreContent.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WidgetExploreContent.swift; sourceTree = "<group>"; };
 		00D280F6247EFFFE006BEE23 /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; usesTabs = 0; };
 		00D280FB247F019C006BEE23 /* Date+ExtensionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+ExtensionTests.swift"; sourceTree = "<group>"; usesTabs = 0; };
 		00D5593424DB152300C78F08 /* WidgetsExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetsExtension.entitlements; sourceTree = "<group>"; };
@@ -5600,6 +5602,7 @@
 			children = (
 				006694FD265D9F3A00E23AE4 /* WidgetCache.swift */,
 				006694FB265D9F2900E23AE4 /* WidgetSettings.swift */,
+				00C69C392678206A0036D5D5 /* WidgetExploreContent.swift */,
 				0066BE2F265EC4A900512BE8 /* WidgetFeaturedContent.swift */,
 			);
 			path = Models;
@@ -11105,6 +11108,7 @@
 				D813FDA51EC34B2600FA4690 /* WMFArticle+Extensions.swift in Sources */,
 				D844DA011D6CC3C20042D692 /* MWKLanguageLink.m in Sources */,
 				83ACAAAD24E6EED9003B3035 /* WikipediaSiteInfoLookup.swift in Sources */,
+				00C69C3A2678206B0036D5D5 /* WidgetExploreContent.swift in Sources */,
 				D844D9F71D6CC05F0042D692 /* ImageDownload.swift in Sources */,
 				0E728D361DAEE8FF0074EB4B /* WMFRandomContentSource.m in Sources */,
 				83CCB28A209CA4E600D31565 /* NSRegularExpression+HTML.m in Sources */,

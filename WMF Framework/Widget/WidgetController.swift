@@ -198,7 +198,7 @@ public extension WidgetController {
             return decodedCache
         }
 
-        return WidgetCache(settings: .default, featuredContent: nil)
+        return WidgetCache(settings: .default, featuredContent: nil, exploreContent: nil)
     }
 
     func saveCache(_ widgetCache: WidgetCache) {
