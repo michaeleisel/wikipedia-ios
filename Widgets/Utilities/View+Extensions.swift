@@ -6,4 +6,8 @@ extension View {
         return self.shadow(color: Color.black.opacity(intensity), radius: 5, x:0, y: 0)
     }
 
+    func diffuseShadow(intensity: Double = 0.15) -> some View {
+        return self.shadow(color: Color.black.opacity(intensity), radius: 20, x: 0, y: 0)
+    }
+    
 }
