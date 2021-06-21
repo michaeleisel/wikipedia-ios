@@ -185,6 +185,7 @@ static NSString *const WMFPreviousLanguagesKey = @"WMFPreviousSelectedLanguagesK
 - (NSArray<NSString *> *)readSavedPreferredLanguageCodesInManagedObjectContext:(NSManagedObjectContext *)moc {
     __block NSArray<NSString *> *preferredLanguages = nil;
     [moc performBlockAndWait:^{
+        yoo();
         preferredLanguages = [moc wmf_arrayValueForKey:WMFPreviousLanguagesKey] ?: @[];
     }];
     return preferredLanguages;
@@ -194,6 +195,7 @@ static NSString *const WMFPreviousLanguagesKey = @"WMFPreviousSelectedLanguagesK
     NSMutableArray<NSString *> *preferredLanguages = [[self readSavedPreferredLanguageCodes] mutableCopy];
 
     if (preferredLanguages.count == 0) {
+        [[Yoo alloc] init];
         NSArray<NSString *> *osLanguages = NSLocale.wmf_preferredWikipediaLanguageCodes;
         [osLanguages enumerateObjectsWithOptions:0
                                       usingBlock:^(id _Nonnull obj, NSUInteger idx, BOOL *_Nonnull stop) {

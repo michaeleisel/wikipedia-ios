@@ -1,6 +1,8 @@
 #import "NSString+SHA256.h"
 #import <CommonCrypto/CommonCrypto.h>
 
+void yoo2() {}
+
 @implementation NSData (SHA256)
 
 - (NSString *)SHA256 {

@@ -1,6 +1,7 @@
 #import <WMF/NSArray+WMFMapping.h>
 #import <WMF/WMF-Swift.h>
 
+void yoo12() {}
 NS_ASSUME_NONNULL_BEGIN
 
 @implementation NSArray (WMFMapping)

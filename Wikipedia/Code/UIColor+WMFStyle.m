@@ -1,5 +1,6 @@
 #import <WMF/UIColor+WMFStyle.h>
 
+void yoo4() {}
 @implementation UIColor (WMFStyle)
 
 - (instancetype)wmf_copyWithAlpha:(CGFloat)alpha {

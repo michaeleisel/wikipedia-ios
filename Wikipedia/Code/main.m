@@ -1,5 +1,6 @@
 #import "AppDelegate.h"
 #import "Wikipedia-Swift.h"
+#import <mach-o/dyld.h>
 
 #if TEST
 
@@ -15,7 +16,7 @@
 @property (nonatomic, strong) UIWindow *window;
 @end
 
-@implementation WMFMockAppDelegate
+@implementation  WMFMockAppDelegate
 
 - (UIWindow *)window {
     if (!_window) {
@@ -32,8 +33,44 @@
 
 @end
 #endif
-
+void yoo2();
+void yoo3();
+void yoo4();
+void yoo5();
+void yoo6();
+void yoo7();
+void yoo8();
+void yoo9();
+void yoo10();
+void yoo11();
+void yoo12();
+void yoo13();
+void yoo14();
+void yoo15();
+void yoo16();
+void yoo17();
+void yoo18();
+void asdlfjasd();
+void yoo19();
 int main(int argc, char *argv[]) {
+    if (!strstr(_dyld_get_image_name(0), "/Wikipedia")) { abort(); }
+    intptr_t slide = _dyld_get_image_vmaddr_slide(0);
+    printf("image: %p\n", _dyld_get_image_header(0));
+    printf("slide: %lu\n", slide);
+
+     yoo2();
+     yoo3();
+    asdlfjasd();
+     yoo4();
+     yoo5();
+     yoo6();
+     yoo8();
+     yoo9();
+     yoo12();
+     yoo13();
+     yoo16();
+     yoo17();
+     yoo18();
     @autoreleasepool {
         WMFSwiftKVOCrashWorkaround *workarounder = [[WMFSwiftKVOCrashWorkaround alloc] init];
         [workarounder performWorkaround];

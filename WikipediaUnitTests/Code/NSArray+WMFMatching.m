@@ -1,5 +1,5 @@
 #import "NSArray+WMFMatching.h"
-
+void yoo14() {}
 @implementation NSArray (WMFMatching)
 
 - (BOOL)wmf_containsObjectsInAnyOrder:(NSArray *)objects {

@@ -1,5 +1,8 @@
 @import Foundation;
 
+@interface Asdff : NSObject
+@end
+
 @interface NSBundle (WMFInfoUtils)
 
 - (NSString *)wmf_bundleName;

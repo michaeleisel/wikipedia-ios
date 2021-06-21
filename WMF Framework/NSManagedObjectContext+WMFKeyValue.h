@@ -4,6 +4,8 @@ NS_ASSUME_NONNULL_BEGIN
 
 @class WMFKeyValue;
 
+void yoo();
+
 @interface NSManagedObjectContext (WMFKeyValue)
 
 - (nullable WMFKeyValue *)wmf_keyValueForKey:(NSString *)key;

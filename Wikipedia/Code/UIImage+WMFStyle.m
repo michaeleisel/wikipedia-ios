@@ -1,5 +1,7 @@
 #import <WMF/UIImage+WMFStyle.h>
 
+void yoo5() {}
+
 @implementation UIImage (WMFStyle)
 
 + (instancetype)wmf_imageFromColor:(UIColor *)color {

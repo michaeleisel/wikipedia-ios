@@ -11,6 +11,7 @@
 #import "MTLModel+NSCoding.h"
 #import "MTLReflection.h"
 
+void yoo6() {}
 // Used in archives to store the modelVersion of the archived instance.
 static NSString * const MTLModelVersionKey = @"MTLModelVersion";
 

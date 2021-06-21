@@ -1,6 +1,7 @@
 #import <WMF/UIView+WMFDefaultNib.h>
 #import <WMF/NSString+WMFExtras.h>
 
+void yoo17() {}
 @implementation UIView (WMFDefaultNib)
 
 + (NSString *)wmf_nibName {

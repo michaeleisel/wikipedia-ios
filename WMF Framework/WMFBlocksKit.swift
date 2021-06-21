@@ -1,5 +1,7 @@
 import Foundation
 
+@objc class Yoo: NSObject {}
+
 extension NSArray {
     @objc public func wmf_map(_ transform: @escaping (Any) -> Any?) -> NSArray {
         return map(transform) as NSArray

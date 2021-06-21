@@ -11,6 +11,9 @@ class ExploreViewController: ColumnarCollectionViewController, ExploreCardViewCo
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            exit(0)
+        }
         layoutManager.register(ExploreCardCollectionViewCell.self, forCellWithReuseIdentifier: ExploreCardCollectionViewCell.identifier, addPlaceholder: true)
         
         navigationItem.titleView = titleView

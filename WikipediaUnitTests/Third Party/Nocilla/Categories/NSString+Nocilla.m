@@ -1,5 +1,5 @@
 #import "NSString+Nocilla.h"
-
+void yoo15() {}
 @implementation NSString (Nocilla)
 
 - (NSRegularExpression *)regex {

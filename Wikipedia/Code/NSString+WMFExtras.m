@@ -4,6 +4,7 @@
 #import <WMF/NSDateFormatter+WMFExtensions.h>
 #import <WMF/WMF-Swift.h>
 
+void yoo13() {}
 @implementation NSString (WMFExtras)
 
 - (NSString *)wmf_safeSubstringToIndex:(NSUInteger)index {

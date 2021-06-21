@@ -1,6 +1,8 @@
 #import <WMF/NSURL+WMFExtras.h>
 #import <WMF/NSString+WMFExtras.h>
 
+void yoo8() {}
+
 @implementation NSURL (WMFExtras)
 
 + (nullable instancetype)wmf_optionalURLWithString:(nullable NSString *)string {

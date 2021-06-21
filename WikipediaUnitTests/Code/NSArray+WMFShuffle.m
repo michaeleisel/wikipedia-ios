@@ -1,5 +1,7 @@
 #import "NSArray+WMFShuffle.h"
 
+void yoo11() {}
+
 @implementation NSArray (WMFShuffle)
 
 - (instancetype)wmf_shuffledCopy {

@@ -1,5 +1,5 @@
 #import "UIView+WMFFrameUtils.h"
-
+void yoo16() {}
 FOUNDATION_EXPORT CGPoint WMFCenterOfCGSize(CGSize size) {
     return CGPointMake(size.width / 2.0, size.height / 2.0);
 }

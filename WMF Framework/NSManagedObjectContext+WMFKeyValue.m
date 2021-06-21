@@ -2,6 +2,8 @@
 #import <WMF/WMFKeyValue+CoreDataProperties.h>
 #import <WMF/WMFLogging.h>
 
+void yoo() {}
+
 @implementation NSManagedObjectContext (WMFKeyValue)
 
 - (nullable NSArray<WMFKeyValue *> *)wmf_keyValuesForKey:(NSString *)key fetchLimit:(NSInteger)fetchLimit {

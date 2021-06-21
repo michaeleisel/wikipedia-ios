@@ -17,6 +17,7 @@ BOOL const shouldShowFullDateInLog = YES;
 NSDateFormatter *_dateFormatter;
 
 + (void)initialize {
+    [Asdff new];
     if (self == [WMFLogFormatter class]) {
         cachedApplicationName = [[NSBundle mainBundle] wmf_bundleName];
 

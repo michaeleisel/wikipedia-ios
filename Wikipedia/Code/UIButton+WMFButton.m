@@ -2,6 +2,7 @@
 #import "Wikipedia-Swift.h"
 @import WMF.UIImage_WMFStyle;
 
+void yoo9() {}
 NS_ASSUME_NONNULL_BEGIN
 
 @implementation UIButton (WMFButton)

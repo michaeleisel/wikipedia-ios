@@ -1,5 +1,20 @@
 #import <WMF/NSBundle+WMFInfoUtils.h>
 
+void asdf() {
+    ;
+}
+
+
+
+@implementation Asdff
+
+- (void)yoo
+{
+    
+}
+
+@end
+
 @implementation NSBundle (WMFInfoUtils)
 
 - (NSString *)wmf_bundleName {

@@ -2,6 +2,8 @@
 #import <WMF/NSCharacterSet+WMFLinkParsing.h>
 #import <WMF/WMF-Swift.h>
 
+void asdlfjasd(){}
+
 @implementation NSURLComponents (WMFLinkParsing)
 
 + (NSURLComponents *)wmf_componentsWithDomain:(NSString *)domain
