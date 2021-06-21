@@ -84,3 +84,73 @@ int main(int argc, char *argv[]) {
             return UIApplicationMain(argc, argv, nil, delegateClass);
     }
 }
+
+//#import "CLRCallRecorder.h"
+#import <dlfcn.h>
+#import <libkern/OSAtomicQueue.h>
+#import <pthread.h>
+#import <mach-o/dyld.h>
+
+typedef struct {
+    void *ptr;
+    NSInteger number;
+} CLRCall;
+
+static OSQueueHead sQueueData = OS_ATOMIC_QUEUE_INIT;
+static OSQueueHead *sQueue = &sQueueData;
+static BOOL sStopCollecting = NO;
+static BOOL sInitDidOccur = NO;
+
+typedef struct {
+    void *pointer;
+    void *next;
+} PointerNode;
+
+void __sanitizer_cov_trace_pc_guard_init(uint32_t *start, uint32_t *stop) {
+    sInitDidOccur = YES;
+    for (uint32_t *x = start; x < stop; x++) {
+        *x = 1;
+    }
+}
+
+void __sanitizer_cov_trace_pc_guard(uint32_t *guard) {
+    // If initialization has not occurred yet (meaning that guard is uninitialized), that means that initial functions like +load are being run. These functions will only be run once anyways, so we should always allow them to be recorded and ignore guard
+    if (sStopCollecting || (!(*guard) && sInitDidOccur)) {
+        return;
+    }
+    *guard = 0;
+    void *pointer = __builtin_return_address(0);
+    PointerNode *node = malloc(sizeof(PointerNode));
+    *node = (PointerNode){pointer, NULL};
+    OSAtomicEnqueue(sQueue, node, offsetof(PointerNode, next));
+}
+
+extern NSArray <NSNumber *> *CLRCollectCalls(void) {
+    sStopCollecting = YES;
+    __sync_synchronize();
+    // Hopefully, any other threads for which sStopCollecting was NO when they entered and are still preempted will get to preempt
+    // during this sleep and finish up
+    sleep(1);
+    NSMutableArray <NSNumber *> *functions = [NSMutableArray array];
+    while (YES) {
+        PointerNode *node = OSAtomicDequeue(sQueue, offsetof(PointerNode, next));
+        if (node == NULL) {
+            break;
+        }
+        [functions addObject:@((NSUInteger)node->pointer)];
+    }
+    return [[functions reverseObjectEnumerator] allObjects];
+}
+
+void finishh() {
+    if (!strstr(_dyld_get_image_name(0), "/Wikipedia")) {
+        abort();
+    }
+    intptr_t slide = _dyld_get_image_vmaddr_slide(0);
+    NSArray <NSNumber *> *calls = CLRCollectCalls();
+    printf("-- begin calls\n");
+    for (NSNumber *call in calls) {
+        printf("zzzz %zu\n", [call unsignedIntegerValue] - slide);
+    }
+    printf("-- end calls\n");
+}

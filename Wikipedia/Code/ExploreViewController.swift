@@ -12,6 +12,7 @@ class ExploreViewController: ColumnarCollectionViewController, ExploreCardViewCo
     override func viewDidLoad() {
         super.viewDidLoad()
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+            finishh()
             exit(0)
         }
         layoutManager.register(ExploreCardCollectionViewCell.self, forCellWithReuseIdentifier: ExploreCardCollectionViewCell.identifier, addPlaceholder: true)
