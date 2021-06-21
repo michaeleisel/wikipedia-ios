@@ -1889,7 +1889,7 @@
 		B0E806951C0CEA7B0065EBC0 /* AboutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E806931C0CEA7B0065EBC0 /* AboutViewController.m */; };
 		B0E806961C0CEA7B0065EBC0 /* AboutViewController.plist in Resources */ = {isa = PBXBuildFile; fileRef = B0E806941C0CEA7B0065EBC0 /* AboutViewController.plist */; };
 		B0E806C41C0CEB380065EBC0 /* WMFSettingsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E806C11C0CEB380065EBC0 /* WMFSettingsViewController.m */; };
-		B0E8071F1C0CEC8A0065EBC0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E8071E1C0CEC8A0065EBC0 /* main.m */; settings = {COMPILER_FLAGS = "-O0"; }; };
+		B0E8071F1C0CEC8A0065EBC0 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E8071E1C0CEC8A0065EBC0 /* main.m */; };
 		B0E8073E1C0CED810065EBC0 /* WMFLogFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E807351C0CED810065EBC0 /* WMFLogFormatter.m */; };
 		B0E807DB1C0CF04A0065EBC0 /* MWKSearchRedirectMapping.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E807CA1C0CF04A0065EBC0 /* MWKSearchRedirectMapping.m */; };
 		B0E8086D1C0D15170065EBC0 /* WMFCodingStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = B0E8086C1C0D15170065EBC0 /* WMFCodingStyle.m */; };
@@ -14071,7 +14071,6 @@
 				LD_GENERATE_MAP_FILE = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_CFLAGS = "-fsanitize-coverage=func,trace-pc-guard";
 				OTHER_SWIFT_FLAGS = "-DNDEBUG -DTEST";
 				SDKROOT = iphoneos;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
@@ -14227,7 +14226,6 @@
 				LD_GENERATE_MAP_FILE = YES;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_CFLAGS = "-fsanitize-coverage=func,trace-pc-guard";
 				OTHER_SWIFT_FLAGS = "-DDEBUG -DUI_TEST";
 				SDKROOT = iphoneos;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
@@ -14716,7 +14714,6 @@
 				LD_GENERATE_MAP_FILE = YES;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_CFLAGS = "-fsanitize-coverage=func,trace-pc-guard";
 				OTHER_SWIFT_FLAGS = "-DDEBUG -DWMF_EVENT_LOGGING_DEV_DEBUG";
 				SDKROOT = iphoneos;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
@@ -15657,7 +15654,6 @@
 				LD_GENERATE_MAP_FILE = YES;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_CFLAGS = "-fsanitize-coverage=func,trace-pc-guard";
 				OTHER_SWIFT_FLAGS = "-DDEBUG";
 				SDKROOT = iphoneos;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
@@ -15724,8 +15720,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_GENERATE_MAP_FILE = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_CFLAGS = "-fsanitize-coverage=func,trace-pc-guard";
-				OTHER_SWIFT_FLAGS = "-DNDEBUG -sanitize-coverage=func -sanitize=undefined";
+				OTHER_SWIFT_FLAGS = "-DNDEBUG";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = singlefile;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
@@ -15876,7 +15871,6 @@
 				LD_GENERATE_MAP_FILE = YES;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_CFLAGS = "-fsanitize-coverage=func,trace-pc-guard";
 				OTHER_SWIFT_FLAGS = "-DDEBUG -DWMF_LABS";
 				SDKROOT = iphoneos;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
@@ -16827,7 +16821,6 @@
 				LD_GENERATE_MAP_FILE = YES;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_CFLAGS = "-fsanitize-coverage=func,trace-pc-guard";
 				OTHER_SWIFT_FLAGS = "-DDEBUG -DWMF_LOCAL_ANNOUNCEMENTS -DWMF_LOCAL_PAGE_CONTENT_SERVICE";
 				SDKROOT = iphoneos;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
@@ -17310,7 +17303,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_GENERATE_MAP_FILE = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_CFLAGS = "-fsanitize-coverage=func,trace-pc-guard";
 				OTHER_SWIFT_FLAGS = "-DNDEBUG";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -17557,7 +17549,6 @@
 				LD_GENERATE_MAP_FILE = YES;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_CFLAGS = "-fsanitize-coverage=func,trace-pc-guard";
 				OTHER_SWIFT_FLAGS = "-DDEBUG";
 				SDKROOT = iphoneos;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
@@ -18189,7 +18180,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_GENERATE_MAP_FILE = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_CFLAGS = "-fsanitize-coverage=func,trace-pc-guard";
 				OTHER_SWIFT_FLAGS = "-DNDEBUG -DWMF_APPS_LABS_PAGE_CONTENT_SERVICE";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -18490,7 +18480,6 @@
 				LD_GENERATE_MAP_FILE = YES;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_CFLAGS = "-fsanitize-coverage=func,trace-pc-guard";
 				OTHER_SWIFT_FLAGS = "-DDEBUG -DWMF_APPS_LABS_PAGE_CONTENT_SERVICE";
 				SDKROOT = iphoneos;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
@@ -19091,7 +19080,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_GENERATE_MAP_FILE = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_CFLAGS = "-fsanitize-coverage=func,trace-pc-guard";
 				OTHER_SWIFT_FLAGS = "-DNDEBUG -DWMF_NO_APP_GROUP";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -19424,7 +19412,6 @@
 				LD_GENERATE_MAP_FILE = YES;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				OTHER_CFLAGS = "-fsanitize-coverage=func,trace-pc-guard";
 				OTHER_SWIFT_FLAGS = "-DDEBUG -DWMF_NO_APP_GROUP";
 				SDKROOT = iphoneos;
 				SWIFT_INSTALL_OBJC_HEADER = NO;
@@ -20324,7 +20311,6 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_GENERATE_MAP_FILE = YES;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_CFLAGS = "-fsanitize-coverage=func,trace-pc-guard";
 				OTHER_SWIFT_FLAGS = "-DNDEBUG -DWMF_LABS";
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;

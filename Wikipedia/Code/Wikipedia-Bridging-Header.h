@@ -71,5 +71,3 @@
 #import "TUSafariActivity.h"
 #import "DDLog+WMFLogger.h"
 #import "NYTPhotoViewer.h"
-
-void finishh(void);
