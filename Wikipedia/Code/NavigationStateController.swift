@@ -119,8 +119,7 @@ final class NavigationStateController: NSObject {
                 let settingsVC = WMFSettingsViewController(dataStore: dataStore, andPushNotificationsController: pushNotificationsController)
                 pushOrPresent(settingsVC, navigationController: navigationController, presentation: viewController.presentation)
             case (.account, _):
-                let accountVC = AccountViewController()
-                accountVC.dataStore = dataStore
+                let accountVC = AccountViewController(dataStore: dataStore, pushNotificationsController: pushNotificationsController)
                 pushOrPresent(accountVC, navigationController: navigationController, presentation: viewController.presentation)
             case (.talkPage, let info?):
                 guard

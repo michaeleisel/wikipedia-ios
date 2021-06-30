@@ -87,6 +87,55 @@ open class Fetcher: NSObject {
         return key
     }
     
+    //TODO: reattemptLoginOn401Response IS DROPPED HERE
+    @discardableResult public func performTokenizedDecodableMediaWikiAPIGET<T: Decodable>(tokenType: TokenType = .csrf, to URL: URL?, with queryParameters: [String: Any]?, cancellationKey: CancellationKey? = nil, reattemptLoginOn401Response: Bool = true, completionHandler: @escaping (Result<T, Error>) -> Swift.Void) -> CancellationKey? {
+        let key = cancellationKey ?? UUID().uuidString
+        
+        let task = requestMediaWikiAPIAuthToken(for: URL, type: tokenType, cancellationKey: key) { (result) in
+            switch result {
+            case .failure(let error):
+                completionHandler(.failure(error))
+                self.untrack(taskFor: key)
+            case .success(let token):
+                var mutableQueryParameters = queryParameters ?? [:]
+                mutableQueryParameters[tokenType.parameterName] = token.value
+                let updatedURL = self.configuration.mediaWikiAPIURLForURL(URL, with: mutableQueryParameters)
+                let innerKey = cancellationKey ?? UUID().uuidString
+                let task = self.session.jsonDecodableTask(with: updatedURL) { (result: T?, response: URLResponse?, error: Error?) in
+                    guard let result = result else {
+                        let error = error ?? RequestError.unexpectedResponse
+                        completionHandler(.failure(error))
+                        self.untrack(taskFor: innerKey)
+                        return
+                    }
+                    completionHandler(.success(result))
+                    self.untrack(taskFor: innerKey)
+                }
+                self.track(task: task, for: innerKey)
+            }
+        }
+        self.track(task: task, for: key)
+        return key
+    }
+    
+    //TODO: reattemptLoginOn401Response will get dropped here
+    @discardableResult public func performTokenizedMediaWikiAPIGET(tokenType: TokenType = .csrf, to URL: URL?, with queryParameters: [String: String]?, cancellationKey: CancellationKey? = nil, reattemptLoginOn401Response: Bool = true, completionHandler: @escaping ([String: Any]?, HTTPURLResponse?, Error?) -> Swift.Void) -> CancellationKey? {
+        let key = cancellationKey ?? UUID().uuidString
+        let task = requestMediaWikiAPIAuthToken(for: URL, type: tokenType, cancellationKey: key) { (result) in
+            switch result {
+            case .failure(let error):
+                completionHandler(nil, nil, error)
+                self.untrack(taskFor: key)
+            case .success(let token):
+                var mutableQueryParameters = queryParameters ?? [:]
+                mutableQueryParameters[tokenType.parameterName] = token.value
+                self.performMediaWikiAPIGET(for: URL, with: queryParameters, cancellationKey: key, completionHandler: completionHandler)
+            }
+        }
+        track(task: task, for: key)
+        return key
+    }
+    
     @objc(performMediaWikiAPIPOSTForURL:withBodyParameters:cancellationKey:reattemptLoginOn401Response:completionHandler:)
     @discardableResult public func performMediaWikiAPIPOST(for URL: URL?, with bodyParameters: [String: String]?, cancellationKey: CancellationKey? = nil, reattemptLoginOn401Response: Bool = true, completionHandler: @escaping ([String: Any]?, HTTPURLResponse?, Error?) -> Swift.Void) -> URLSessionTask? {
         let url = configuration.mediaWikiAPIURLForURL(URL, with: nil)

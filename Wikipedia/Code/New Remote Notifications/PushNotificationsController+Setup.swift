@@ -1,22 +1,9 @@
 
 import Foundation
 
-@objc(WMFPushNotificationsController)
-public class PushNotificationsController: NSObject {
-    @objc public var deviceToken: Data? {
-        didSet {
-            guard _deviceToken == nil,
-                  deviceToken != nil else {
-                assertionFailure("Expecting to only set device token once per lifecycle of app.")
-                return
-            }
-            
-            _deviceToken = deviceToken
-        }
-    }
-    private var _deviceToken: Data?
+extension PushNotificationsController {
     
-    private var deviceTokenString: String? {
+    var deviceTokenString: String? {
         guard let deviceToken = deviceToken else {
             assertionFailure("Must have device token to register for echo notifications")
             return nil
@@ -28,14 +15,7 @@ public class PushNotificationsController: NSObject {
         return deviceTokenString
     }
     
-    private let authenticationManager: WMFAuthenticationManager
-    private let echoFetcher = EchoNotificationsFetcher()
-    
-    @objc public init(authenticationManager: WMFAuthenticationManager) {
-        self.authenticationManager = authenticationManager
-    }
-    
-    @objc public func checkNotificationsFullyEnabled(completion: @escaping (Bool) -> Void) {
+    @objc func checkNotificationsFullyEnabled(completion: @escaping (Bool) -> Void) {
         
         guard deviceToken != nil else {
             completion(false)
@@ -67,7 +47,7 @@ public class PushNotificationsController: NSObject {
         }
     }
     
-    @objc public func fullyEnableNotifications(completion: @escaping (Bool, Error?) -> Void) {
+    @objc func fullyEnableNotifications(completion: @escaping (Bool, Error?) -> Void) {
         
         guard deviceToken != nil else {
             assertionFailure("Missing device token, be sure AppDelegate is set up properly and we are assigning callback token to this class.")
@@ -96,7 +76,7 @@ public class PushNotificationsController: NSObject {
         }
     }
     
-    @objc public func fullyDisableNotifications(completion: @escaping (Bool, Error?) -> Void) {
+    @objc func fullyDisableNotifications(completion: @escaping (Bool, Error?) -> Void) {
         UserDefaults.standard.wmf_setEchoPushNotificationsRegistered(false)
         
         guard let deviceTokenString = deviceTokenString else {

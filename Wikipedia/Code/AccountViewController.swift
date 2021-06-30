@@ -1,5 +1,6 @@
 
 import UIKit
+import SwiftUI
 
 @objc(WMFAccountViewControllerDelegate)
 protocol AccountViewControllerDelegate: AnyObject {
@@ -8,6 +9,7 @@ protocol AccountViewControllerDelegate: AnyObject {
 
 private enum ItemType {
     case logout
+    case notificationCenter
     case talkPage
     case talkPageAutoSignDiscussions
 }
@@ -32,6 +34,7 @@ class AccountViewController: SubSettingsViewController {
     
     @objc var dataStore: MWKDataStore!
     @objc weak var delegate: AccountViewControllerDelegate?
+    private let pushNotificationsController: PushNotificationsController
     
     private lazy var sections: [Section] = {
         
@@ -41,15 +44,26 @@ class AccountViewController: SubSettingsViewController {
         }
         
         let logout = Item(title: username, subtitle: CommonStrings.logoutTitle, iconName: "settings-user", iconColor: .white, iconBackgroundColor: UIColor.wmf_colorWithHex(0xFF8E2B), type: .logout)
+        let notificationCenter = Item(title: WMFLocalizedString("account-notification-center-title", value: "Notification Center", comment: "Title for button and page letting user view their notifications."), subtitle: nil, iconName: "settings-notifications", iconColor: .white, iconBackgroundColor: .red50, type: .notificationCenter)
         let talkPage = Item(title: WMFLocalizedString("account-talk-page-title", value: "Your talk page", comment: "Title for button and page letting user view their account page."), subtitle: nil, iconName: "settings-talk-page", iconColor: .white, iconBackgroundColor: UIColor(red: 51/255, green: 102/255, blue: 204/255, alpha: 1) , type: .talkPage)
-        let account = Section(items: [logout, talkPage], headerTitle: WMFLocalizedString("account-group-title", value: "Your Account", comment: "Title for account group on account settings screen."), footerTitle: nil)
+        let account = Section(items: [logout, notificationCenter, talkPage], headerTitle: WMFLocalizedString("account-group-title", value: "Your Account", comment: "Title for account group on account settings screen."), footerTitle: nil)
 
         let autoSignDiscussions = Item(title: WMFLocalizedString("account-talk-preferences-auto-sign-discussions", value: "Auto-sign discussions", comment: "Title for talk page preference that configures adding signature to new posts"), subtitle: nil, iconName: nil, iconColor: nil, iconBackgroundColor: nil, type: .talkPageAutoSignDiscussions)
         let talkPagePreferences = Section(items: [autoSignDiscussions], headerTitle: WMFLocalizedString("account-talk-preferences-title", value: "Talk page preferences", comment: "Title for talk page preference sections in account settings"), footerTitle: WMFLocalizedString("account-talk-preferences-auto-sign-discussions-setting-explanation", value: "Auto-signing of discussions will use the signature defined in Signature settings", comment: "Text explaining how setting the auto-signing of talk page discussions preference works"))
 
         return [account, talkPagePreferences]
     }()
-
+    
+    @objc init(dataStore: MWKDataStore, pushNotificationsController: PushNotificationsController) {
+        self.dataStore = dataStore
+        self.pushNotificationsController = pushNotificationsController
+        super.init()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         title = CommonStrings.account
@@ -81,7 +95,7 @@ class AccountViewController: SubSettingsViewController {
             cell.disclosureType = .viewControllerWithDisclosureText
             cell.disclosureText = item.type == .logout ? CommonStrings.logoutTitle : nil
             cell.accessibilityTraits = .button
-        case .talkPage:
+        case .talkPage, .notificationCenter:
             cell.disclosureType = .viewController
             cell.disclosureText = nil
             cell.accessibilityTraits = .button
@@ -120,6 +134,19 @@ class AccountViewController: SubSettingsViewController {
                 
                 self.navigationController?.pushViewController(loadingFlowController, animated: true)
             }
+        case .notificationCenter:
+            
+            if #available(iOS 13.0, *) {
+                let hostingVC = UIHostingController(
+                    rootView: NotificationCenterListView(dataProvider: pushNotificationsController.dataProvider)
+                        .environment(\.managedObjectContext, pushNotificationsController.dataProvider.container.viewContext)
+                )
+                self.navigationController?.pushViewController(hostingVC, animated: true)
+            } else {
+                let notificationCenterVC = NotificationCenterViewController()
+                self.navigationController?.pushViewController(notificationCenterVC, animated: true)
+            }
+            
         default:
             break
         }

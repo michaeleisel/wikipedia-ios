@@ -1,5 +1,6 @@
 #import "WMFViewController.h"
 @class MWKDataStore;
+@class WMFPushNotificationsController;
 
 NS_ASSUME_NONNULL_BEGIN
 
