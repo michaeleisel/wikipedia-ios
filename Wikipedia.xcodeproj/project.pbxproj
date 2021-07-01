@@ -381,6 +381,10 @@
 		6780D5C1237AF8AE0087A5D1 /* DiffToolbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6780D5BF237AF8AE0087A5D1 /* DiffToolbarView.xib */; };
 		6780D5C2237AF8AE0087A5D1 /* DiffToolbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6780D5BF237AF8AE0087A5D1 /* DiffToolbarView.xib */; };
 		6780D5C3237AF8AE0087A5D1 /* DiffToolbarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6780D5BF237AF8AE0087A5D1 /* DiffToolbarView.xib */; };
+		67820E55268D3DD3007B7EF7 /* NotificationCenterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67820E54268D3DD3007B7EF7 /* NotificationCenterTableViewCell.swift */; };
+		67820E56268D3DD3007B7EF7 /* NotificationCenterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67820E54268D3DD3007B7EF7 /* NotificationCenterTableViewCell.swift */; };
+		67820E57268D3DD3007B7EF7 /* NotificationCenterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67820E54268D3DD3007B7EF7 /* NotificationCenterTableViewCell.swift */; };
+		67820E58268D3DD3007B7EF7 /* NotificationCenterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 67820E54268D3DD3007B7EF7 /* NotificationCenterTableViewCell.swift */; };
 		6782DB912343B6F9003FA21B /* DiffContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6782DB902343B6F9003FA21B /* DiffContainerViewController.swift */; };
 		6782DB922343B6F9003FA21B /* DiffContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6782DB902343B6F9003FA21B /* DiffContainerViewController.swift */; };
 		6782DB932343B6F9003FA21B /* DiffContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6782DB902343B6F9003FA21B /* DiffContainerViewController.swift */; };
@@ -3701,6 +3705,7 @@
 		6780D5B3237A1F480087A5D1 /* DiffResponse.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = DiffResponse.json; sourceTree = "<group>"; };
 		6780D5B9237AF8A10087A5D1 /* DiffToolbarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffToolbarView.swift; sourceTree = "<group>"; };
 		6780D5BF237AF8AE0087A5D1 /* DiffToolbarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DiffToolbarView.xib; sourceTree = "<group>"; };
+		67820E54268D3DD3007B7EF7 /* NotificationCenterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationCenterTableViewCell.swift; sourceTree = "<group>"; };
 		6782DB902343B6F9003FA21B /* DiffContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffContainerViewController.swift; sourceTree = "<group>"; };
 		6782DB9C2343B7DB003FA21B /* DiffHeaderTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffHeaderTitleView.swift; sourceTree = "<group>"; };
 		6782DBA22343B7EE003FA21B /* DiffHeaderSummaryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiffHeaderSummaryView.swift; sourceTree = "<group>"; };
@@ -6665,6 +6670,7 @@
 				67CD3858267D1BD70026DDD1 /* EchoNotificationsFetcher.swift */,
 				67C287D0268CF6CE00DFA9D0 /* RemoteEchoNotification.swift */,
 				67C287C1268CE79400DFA9D0 /* NotificationCenterViewController.swift */,
+				67820E54268D3DD3007B7EF7 /* NotificationCenterTableViewCell.swift */,
 				67C287CB268CE7F800DFA9D0 /* NotificationCenterListView.swift */,
 				67C287E5268D1A3900DFA9D0 /* EchoNotification+Extensions.swift */,
 				67C287DF268D188700DFA9D0 /* EchoNotifications.xcdatamodeld */,
@@ -10756,6 +10762,7 @@
 				B0E802B81C0CD2140065EBC0 /* UIBarButtonItem+WMFButtonConvenience.m in Sources */,
 				B08E7E9B1C1FA57A00EC3C99 /* UIViewController+WMFEmptyView.m in Sources */,
 				FFD7B85624B3B384005C2471 /* ReferenceBackLinksViewControllerDelegate.swift in Sources */,
+				67820E55268D3DD3007B7EF7 /* NotificationCenterTableViewCell.swift in Sources */,
 				B0524B1F214854E900D8FD8D /* DescriptionWelcomeInitialViewController.swift in Sources */,
 				D80BF0A32347735E00B3B522 /* AppSearchButton.swift in Sources */,
 				8330532E23EF107D00123141 /* MediaListGalleryViewController.swift in Sources */,
@@ -11619,6 +11626,7 @@
 				83E52BB71F681F940045E776 /* ShareAFactViewController.swift in Sources */,
 				D8A42AD51E815A9C00D8E281 /* UIViewController+WMFEmptyView.m in Sources */,
 				BAA0D91F1F4F165A00091284 /* PageIssuesTableViewController.swift in Sources */,
+				67820E58268D3DD3007B7EF7 /* NotificationCenterTableViewCell.swift in Sources */,
 				B0524B22214854E900D8FD8D /* DescriptionWelcomeInitialViewController.swift in Sources */,
 				D8A42ADD1E815A9C00D8E281 /* NSUserDefaults+WMFApplicationDefaults.swift in Sources */,
 				8382F8DC20D9371E00AE5250 /* WMFContentGroup+DetailViewControllers.swift in Sources */,
@@ -12143,6 +12151,7 @@
 				6734EE7322976AE300F00B05 /* InfoBannerView.swift in Sources */,
 				D8BDA8BE1E71B8C90031F4BF /* WMFDeleteBackwardReportingTextField.swift in Sources */,
 				83023C0720E51DDF00EC7592 /* SearchLanguagesBarViewController.swift in Sources */,
+				67820E57268D3DD3007B7EF7 /* NotificationCenterTableViewCell.swift in Sources */,
 				D8CE25771E698E2400DAE2E0 /* MWKLanguageLinkFetcher.m in Sources */,
 				7ABE173C2239DEF0006BA309 /* WelcomeAnimationView.swift in Sources */,
 				7A196F5B21BF199500D9E4B5 /* SectionEditorWebView.swift in Sources */,
@@ -12640,6 +12649,7 @@
 				D8EC3E651E9BDA35006712EB /* UIViewController+WMFHideKeyboard.swift in Sources */,
 				674711842507253500287951 /* ArticleAsLivingDocSnippetCollectionViewCell.swift in Sources */,
 				D8EC3E671E9BDA35006712EB /* WeakScriptMessageDelegate.swift in Sources */,
+				67820E56268D3DD3007B7EF7 /* NotificationCenterTableViewCell.swift in Sources */,
 				D8EC3E6D1E9BDA35006712EB /* UIView+Animations.swift in Sources */,
 				7ABE173D2239DEF0006BA309 /* WelcomeAnimationView.swift in Sources */,
 				D8EC3E6E1E9BDA35006712EB /* WMFDeleteBackwardReportingTextField.swift in Sources */,

@@ -79,15 +79,17 @@ class PushNotificationsDataProvider {
         echoFetcher.fetchNotifications { result in
             switch result {
             case .success(let remoteNotifications):
-                for remoteNotification in remoteNotifications {
-                    let _ = EchoNotification.init(remoteNotification: remoteNotification, moc: moc)
-                }
-                
-                do {
-                    try self.save(moc: moc)
-                    completion(.success(()))
-                } catch (let error) {
-                    completion(.failure(error))
+                moc.perform {
+                    for remoteNotification in remoteNotifications {
+                        let _ = EchoNotification.init(remoteNotification: remoteNotification, moc: moc)
+                    }
+                    
+                    do {
+                        try self.save(moc: moc)
+                        completion(.success(()))
+                    } catch (let error) {
+                        completion(.failure(error))
+                    }
                 }
             case .failure(let error):
                 completion(.failure(error))

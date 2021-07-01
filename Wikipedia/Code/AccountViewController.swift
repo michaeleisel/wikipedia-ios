@@ -143,7 +143,7 @@ class AccountViewController: SubSettingsViewController {
                 )
                 self.navigationController?.pushViewController(hostingVC, animated: true)
             } else {
-                let notificationCenterVC = NotificationCenterViewController()
+                let notificationCenterVC = NotificationCenterViewController(dataProvider: pushNotificationsController.dataProvider)
                 self.navigationController?.pushViewController(notificationCenterVC, animated: true)
             }
             
