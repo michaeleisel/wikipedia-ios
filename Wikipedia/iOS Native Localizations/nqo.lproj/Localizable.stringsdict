@@ -162,5 +162,53 @@
 			<string>ߞߎߡߘߊ %1$d ߟߎ߬</string>
 		</dict>
 	</dict>
+	<key>page-history-revision-size-diff-addition</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@v1@ ߝߙߊ߬ߣߍ߲</string>
+		<key>v1</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>byte %1$d</string>
+			<key>other</key>
+			<string>bytes %1$d</string>
+		</dict>
+	</dict>
+	<key>page-history-revision-size-diff-subtraction</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@v1@ ߓߘߊ߫ ߢߌ߬ߣߊ߬ߓߐ߫</string>
+		<key>v1</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>ߓߌߕ %1$d</string>
+			<key>other</key>
+			<string>ߓߌߕ %1$d ߟߎ߫</string>
+		</dict>
+	</dict>
+	<key>page-history-stats-text</key>
+	<dict>
+		<key>NSStringLocalizedFormatKey</key>
+		<string>%#@v1@ ߞߊ߬ߦߌ߯ %2$@ ߟߊ߫</string>
+		<key>v1</key>
+		<dict>
+			<key>NSStringFormatSpecTypeKey</key>
+			<string>NSStringPluralRuleType</string>
+			<key>NSStringFormatValueTypeKey</key>
+			<string>d</string>
+			<key>one</key>
+			<string>ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ %1$d</string>
+			<key>other</key>
+			<string>ߡߊ߬ߦߟߍ߬ߡߊ߲߬ߠߌ߲ %1$d ߟߎ߫</string>
+		</dict>
+	</dict>
 </dict>
 </plist>
